@@ -1,0 +1,34 @@
+
+<div id='container'>
+  <div *ngIf='!loc' id='search'>
+    <h1>Five Europe city weather</h1>
+  </div>
+
+  <mat-card *ngFor='let cw of citiesWeather' class="mat-elevation-z18">
+    <mat-card-header>
+      <mat-card-title>
+        <a  (click)="getForcastDetails(cw.name)">{{cw.name}}</a>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <span>
+            {{cw.main?.temp_min - 273.15 | number:'1.0-0'}}<sup>o</sup>C
+          </span>
+        </mat-list-item>
+        <mat-list-item>
+          <span>
+            Sunrise: {{cw.sys?.sunrise*1000 | date:'long'}}
+          </span>
+        </mat-list-item>
+        <mat-list-item>
+          <span>
+            Sunrise:{{cw.sys?.sunset*1000 | date:'long'}}
+          </span>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
